@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import fetchWeather from '../actions/fetchweather';
+import Fetchweather from '../actions/fetchweather';
 
 class Search extends Component{
     constructor(props){
@@ -8,12 +8,11 @@ class Search extends Component{
         this.state={
             term:''
         }
-        const handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleSubmit(event){
         event.preventDefault();
-        console.log(this);
-        this.props.fetchWeather(this.props.state.term);
+        this.props.Fetchweather(this.state.term);
     }
     render(){
         return (
@@ -27,4 +26,4 @@ class Search extends Component{
     }
 }
 
-export default connect(null,fetchWeather)(Search);
+export default connect(null,{Fetchweather})(Search);
